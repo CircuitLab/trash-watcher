@@ -1,7 +1,7 @@
 {
   "name": "trash-watcher",
   "version": "0.0.0",
-  "private": false,
+  "private": true,
   "dependencies": {
     "chokidar": "~0.7.0",
     "serialport": "~1.2.3",
