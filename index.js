@@ -13,6 +13,7 @@ var watcher = chokidar.watch(process.env.HOME + '/.Trash', { persistent: true })
 var serialport = new SerialPort(devicePath, { baudrate: 19200 });
 
 watcher.on('add', function(path, stats) {
+  console.log(path);
   if ((Date.now() - now) <= 1000) return;
   var bufs = new Buffers();
   var filename = basename(path);
@@ -30,9 +31,14 @@ watcher.on('add', function(path, stats) {
   
     console.log(bufs.toString());
 
-    serialport.write(bufs.toBuffer());
+    serialport.write(bufs.toBuffer(), function() {
+      console.log('wrote.');
+      serialport.flush(function() {
+        console.log('flushed.');
+      });
+    });
   } catch (e) {
-    console.error('errror: ', e);
+    console.error('error: ', e);
   }
 });
 
