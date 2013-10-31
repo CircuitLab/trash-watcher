@@ -1,0 +1,12 @@
+{
+  "name": "trash-watcher",
+  "version": "0.0.0",
+  "private": false,
+  "dependencies": {
+    "chokidar": "~0.7.0",
+    "serialport": "~1.2.3",
+    "moment": "~2.4.0",
+    "buffers": "~0.1.1",
+    "accounting": "~0.3.2"
+  }
+}

@@ -1,0 +1,6 @@
+
+# trash-watcher
+
+## License
+
+MIT
