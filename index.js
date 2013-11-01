@@ -9,12 +9,11 @@ var SerialPort = require("serialport").SerialPort;
 
 var now = Date.now();
 var devicePath = process.env.DEVICE_PATH || '/dev/tty.usbmodemfa141';
-var watcher = chokidar.watch(process.env.HOME + '/.Trash', { persistent: true });
+var watcher = chokidar.watch(process.env.HOME + '/.Trash', { persistent: true, ignoreInitial: true });
 var serialport = new SerialPort(devicePath, { baudrate: 19200 });
 
 watcher.on('add', function(path, stats) {
   console.log(path);
-  if ((Date.now() - now) <= 1000) return;
   var bufs = new Buffers();
   var filename = basename(path);
   try {
