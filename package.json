@@ -2,6 +2,10 @@
   "name": "trash-watcher",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node index.js"
+  },
   "dependencies": {
     "chokidar": "~0.7.0",
     "serialport": "~1.2.3",
