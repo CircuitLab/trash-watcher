@@ -41,6 +41,10 @@ watcher.on('add', function(path, stats) {
   }
 });
 
+watcher.on('error', function(e) {
+  console.error('error :', e);
+});
+
 serialport.on('open', function() {
   serialport.on('data', function() {
     console.log('data from board: ', arguments);
