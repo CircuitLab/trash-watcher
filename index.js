@@ -8,7 +8,7 @@ var chokidar = require('chokidar');
 var SerialPort = require("serialport").SerialPort;
 
 var now = Date.now();
-var devicePath = process.env.DEVICE_PATH || '/dev/tty.usbmodemfa141';
+var devicePath = process.env.DEVICE_PATH || '/dev/tty.usbmodem1411';
 var watcher = chokidar.watch(process.env.HOME + '/.Trash', { persistent: true, ignoreInitial: true });
 var serialport = new SerialPort(devicePath, { baudrate: 19200 });
 
@@ -39,6 +39,8 @@ watcher.on('add', function(path, stats) {
   } catch (e) {
     console.error('error: ', e);
   }
+
+  fs.unlink(path);
 });
 
 watcher.on('error', function(e) {
